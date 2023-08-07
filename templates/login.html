@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script
+            src="https://unpkg.com/htmx.org@1.9.3"
+            integrity="sha384-lVb3Rd/Ca0AxaoZg5sACe8FJKF0tnUgR2Kd7ehUOG5GCcROv5uBIZsOqovBAcWua"
+            crossorigin="anonymous"
+                ></script>
+    </head>
+    <body>
+        <div>
+            <form hx-post="/login" hx-vals="js:{id: getQueryId()}">
+                <input name="username" />
+                <input name="password" />
+                <button type="submit" />
+            </form>
+<div id="search-results">results</div>
+        </div>
+        <script>
+            function getQueryId() {
+                const params = (new URL(document.location)).searchParams;
+                const id = params.get("id");
+                return id
+            }
+        </script>
+    </body>
+</html>
