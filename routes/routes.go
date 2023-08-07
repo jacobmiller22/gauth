@@ -2,8 +2,8 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/jacobmiller22/goth/controllers"
-	"github.com/jacobmiller22/goth/controllers/authenticate"
+	"github.com/jacobmiller22/gauth/controllers"
+	"github.com/jacobmiller22/gauth/controllers/authenticate"
 )
 
 func AddRoutes(r *gin.Engine) *gin.Engine {

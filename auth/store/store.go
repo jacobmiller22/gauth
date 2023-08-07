@@ -1,3 +1,3 @@
 package store
 
-import "github.com/jacobmiller22/goth/auth"
+import "github.com/jacobmiller22/gauth/auth"

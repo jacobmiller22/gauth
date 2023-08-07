@@ -1,4 +1,4 @@
-module github.com/jacobmiller22/goth
+module github.com/jacobmiller22/gauth
 
 go 1.20
 

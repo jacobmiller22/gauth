@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jacobmiller22/goth/service"
+	"github.com/jacobmiller22/gauth/service"
 )
 
 type OAuthConfiguration struct {

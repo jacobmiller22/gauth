@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	authService "github.com/jacobmiller22/goth/auth/service"
-	"github.com/jacobmiller22/goth/token/service"
+	authService "github.com/jacobmiller22/gauth/auth/service"
+	"github.com/jacobmiller22/gauth/token/service"
 )
 
 type TokenResponse struct {

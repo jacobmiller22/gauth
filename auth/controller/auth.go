@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jacobmiller22/goth/auth/service"
+	"github.com/jacobmiller22/gauth/auth/service"
 )
 
 func Authorize(c *gin.Context) {

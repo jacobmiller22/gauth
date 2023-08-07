@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/jacobmiller22/goth/auth"
-	authService "github.com/jacobmiller22/goth/auth/service"
-	"github.com/jacobmiller22/goth/token"
+	"github.com/jacobmiller22/gauth/auth"
+	authService "github.com/jacobmiller22/gauth/auth/service"
+	"github.com/jacobmiller22/gauth/token"
 )
 
 func main() {
