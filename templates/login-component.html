@@ -1,0 +1,35 @@
+{{ block "login" . }}
+<div>
+    <h1>Application Login</h1>
+            <form id="auth-form" action="/authenticate" method="get" onsubmit="addQueryId()">
+        <div>
+            <input placeholder="username" class="input"/>
+        </div>
+        <div>
+            <input placeholder="password" type="password" class="input"/>
+        </div>
+        <div>
+            <button type="submit"  class="btn btn-primary">
+                Login
+            </button>
+        </div>
+    </form>
+    <div>
+        Or <a>Sign up</a>
+    </div>
+        <script>
+            function addQueryId() {
+                const params = (new URL(document.location)).searchParams;
+                const id = params.get("id");
+
+                const idInput = document.createElement('input');
+                idInput.type = 'hidden';
+                idInput.name = 'id';
+                idInput.value = id;
+
+                const form = document.getElementById('auth-form')
+                form.appendChild(idInput)
+            }
+        </script>
+</div>
+{{end}}
