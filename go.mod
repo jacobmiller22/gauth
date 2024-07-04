@@ -1,10 +1,10 @@
 module github.com/jacobmiller22/gauth
 
-go 1.20
+go 1.22.5
 
 require (
-	github.com/gin-contrib/static v0.0.1
 	github.com/gin-gonic/gin v1.9.1
+	github.com/google/go-cmp v0.5.5
 )
 
 require (
