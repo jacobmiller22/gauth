@@ -1,28 +1,28 @@
-package authorization
+package oauth2
 
 import (
 	"context"
 	"net/url"
 
-	"github.com/jacobmiller22/gauth/pkg/authorization"
+	"github.com/jacobmiller22/gauth/pkg/oauth2"
 )
 
 type Service struct {
 	RequestRepo RequestRepo
 	CodeRepo    CodeRepo
 
-	ClientReader          authorization.ClientReader
-	AuthCodeReader        authorization.AuthCodeReader
-	TokenRequestProcessor authorization.TokenRequestProcessor
+	ClientReader          oauth2.ClientReader
+	AuthCodeReader        oauth2.AuthCodeReader
+	TokenRequestProcessor oauth2.TokenRequestProcessor
 }
 
-func (s *Service) Authorize(ctx context.Context, req *authorization.AuthorizationReq, userId string) (*authorization.AuthorizationRes, error) {
+func (s *Service) Authorize(ctx context.Context, req *oauth2.AuthorizationReq, userId string) (*oauth2.AuthorizationRes, error) {
 	if err := req.Verify(ctx, s.ClientReader); err != nil {
 		return nil, err
 	}
 
 	// if req.Expired(func() time.Time { return time.Now().Add(time.Second * -5) }) {
-	// 	return nil, fmt.Errorf("expired authorization request")
+	// 	return nil, fmt.Errorf("expired oauth2 request")
 	// }
 
 	redirectUri, err := url.ParseRequestURI(req.RedirectUri)
@@ -46,7 +46,7 @@ func (s *Service) Authorize(ctx context.Context, req *authorization.Authorizatio
 	}
 
 	// TODO: Use NewAuthorizationResponse(req)
-	return &authorization.AuthorizationRes{
+	return &oauth2.AuthorizationRes{
 		State:        req.State,
 		Code:         codeString,
 		ResponseType: req.ResponseType,
@@ -54,7 +54,7 @@ func (s *Service) Authorize(ctx context.Context, req *authorization.Authorizatio
 	}, nil
 }
 
-func (s *Service) Token(ctx context.Context, req *authorization.TokenRequest) (*authorization.TokenResponse, error) {
+func (s *Service) Token(ctx context.Context, req *oauth2.TokenRequest) (*oauth2.TokenResponse, error) {
 	res, err := s.TokenRequestProcessor.BearerToken(req)
 	if err != nil {
 		return nil, err

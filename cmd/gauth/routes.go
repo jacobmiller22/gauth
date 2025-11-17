@@ -18,8 +18,8 @@ func (app *gauthApp) routes() http.Handler {
 
 	l := clog.FromContext(app.ctx)
 
-	mux.HandleFunc(RouteAuthorize, app.r.authorization.Authorize())
-	mux.HandleFunc(RouteToken, app.r.authorization.Token())
+	mux.HandleFunc(RouteAuthorize, app.r.oauth2.Authorize())
+	mux.HandleFunc(RouteToken, app.r.oauth2.Token())
 
 	// mux.HandleFunc("/api/apps", app.applications)
 	//

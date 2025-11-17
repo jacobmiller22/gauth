@@ -1,10 +1,10 @@
-package authorization
+package oauth2
 
 import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/jacobmiller22/gauth/pkg/authorization"
+	"github.com/jacobmiller22/gauth/pkg/oauth2"
 )
 
 type Routes struct {
@@ -22,7 +22,7 @@ func (rte *Routes) Authorize() http.HandlerFunc {
 		codeChallengeMethod := q.Get("code_challenge_method")
 		codeChallenge := q.Get("code_challenge")
 
-		authReq, err := authorization.NewAuthorizationRequest(
+		authReq, err := oauth2.NewAuthorizationRequest(
 			clientId,
 			responseType,
 			redirectUri,
@@ -55,7 +55,7 @@ func (rte *Routes) Authorize() http.HandlerFunc {
 
 		w.Header().Set("Location", resLocation.String())
 
-		if authRes.ResponseType == authorization.ResponseTypeToken {
+		if authRes.ResponseType == oauth2.ResponseTypeToken {
 			w.Header().Set("Cache-Control", "no-store")
 		}
 		w.WriteHeader(http.StatusFound)
@@ -66,7 +66,7 @@ func (rte *Routes) Token() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		q := r.URL.Query()
 
-		tokenReq := authorization.TokenRequest{
+		tokenReq := oauth2.TokenRequest{
 			GrantType:    q.Get("grant_type"),
 			Code:         q.Get("code"),
 			RedirectUri:  q.Get("redirect_uri"),

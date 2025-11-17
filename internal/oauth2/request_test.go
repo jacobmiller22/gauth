@@ -1,9 +1,10 @@
-package authorization
+package oauth2
 
 import (
+	"testing"
+
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"testing"
 )
 
 func TestVerifyAuthorizationRequestValid(t *testing.T) {

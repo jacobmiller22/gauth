@@ -4,11 +4,11 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/jacobmiller22/gauth/internal/authorization"
+	"github.com/jacobmiller22/gauth/internal/oauth2"
 )
 
 type gauthRoutes struct {
-	authorization *authorization.Routes
+	oauth2 *oauth2.Routes
 }
 
 type gauthApp struct {
